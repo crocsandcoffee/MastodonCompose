@@ -20,8 +20,7 @@ fun main() {
             MastodonTheme {
                 WelcomeScreen(
                     modifier = Modifier.fillMaxSize(),
-                    navigateToSignUp = {},
-                    navigateToLogin = {},
+                    onGetStartedClicked = {}
                 )
             }
         }

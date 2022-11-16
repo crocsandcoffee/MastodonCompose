@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
@@ -26,7 +25,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import social.androiddev.common.composables.buttons.MastodonButton
-import social.androiddev.common.composables.buttons.MastodonOutlinedButton
 import social.androiddev.common.theme.Blue
 import social.androiddev.common.theme.MastodonTheme
 import social.androiddev.common.utils.AsyncImage
@@ -35,8 +33,7 @@ import social.androiddev.common.utils.loadImageIntoPainter
 @Composable
 fun WelcomeScreen(
     modifier: Modifier = Modifier,
-    navigateToLogin: () -> Unit,
-    navigateToSignUp: () -> Unit,
+    onGetStartedClicked: () -> Unit,
     appIcon: @Composable () -> Unit = {
         AsyncImage(
             load = { loadImageIntoPainter(url = "https://via.placeholder.com/200x200/6FA4DE/010041?text=MastodonX") },
@@ -107,18 +104,8 @@ fun WelcomeScreen(
                 modifier = Modifier
                     .widthIn(min = 240.dp)
                     .padding(horizontal = 24.dp),
-                onClick = navigateToLogin,
-                text = "Log In"
-            )
-
-            Spacer(Modifier.height(8.dp))
-
-            MastodonOutlinedButton(
-                modifier = Modifier
-                    .widthIn(min = 240.dp)
-                    .padding(horizontal = 24.dp),
-                onClick = navigateToSignUp,
-                text = "Sign Up"
+                onClick = onGetStartedClicked,
+                text = "Get Started"
             )
         }
     }
@@ -129,8 +116,7 @@ fun WelcomeScreen(
 private fun PreviewWelcomeScreen() {
     MastodonTheme(true) {
         WelcomeScreen(
-            navigateToLogin = {},
-            navigateToSignUp = {},
+            onGetStartedClicked = {}
         )
     }
 }
